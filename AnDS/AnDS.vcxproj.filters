@@ -13,5 +13,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="헤더 파일\Structure">
+      <UniqueIdentifier>{8c51cb32-dcf2-4a9f-9ba6-046ad453a971}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\List">
+      <UniqueIdentifier>{05f548f2-a4c5-4a0d-b184-99be8dfec4e3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="List.cpp">
+      <Filter>헤더 파일\List</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Node.hpp">
+      <Filter>헤더 파일\Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="List.hpp">
+      <Filter>헤더 파일\List</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
