@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C", "C\C.vcxproj", "{EF5A2071-2B86-4B4E-8611-41EA468EA557}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C++", "C++\cpp.vcxproj", "{87390DE2-083C-495E-98E5-BEAA89333403}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C++", "C++\C++.vcxproj", "{87390DE2-083C-495E-98E5-BEAA89333403}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
