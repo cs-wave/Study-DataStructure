@@ -70,12 +70,9 @@ void List<T>::erase(size_t index)
 		location = location->next;
 	}
 
-	Node<T>* temp = location->next->next;
-	
-	delete location->next;
-
-	location->next = temp;
-	temp->prev = location;
+	location->next = location->next->next;
+	delete location->next->prev;
+	location->next->prev = location;
 }
 
 
