@@ -1,12 +1,12 @@
 #pragma once
 #include <crtdbg.h>
-#include "List.hpp"
+#include "List.h"
 
 template <class T>
-List<T>::List() 
+_List<T>::_List() 
 {
-	this->begin = new Node<T>();
-	this->end = new Node<T>();
+	this->begin = new _Node<T>();
+	this->end = new _Node<T>();
 
 	this->begin->next = this->end;
 	this->begin->prev = 0;
@@ -19,11 +19,11 @@ List<T>::List()
 }
 
 template <class T>
-List<T>::~List() 
+_List<T>::~_List() 
 {
 	while (this->begin)
 	{
-		Node<T>* temp = this->begin;
+		_Node<T>* temp = this->begin;
 
 		this->begin = this->begin->next;
 		delete temp;
@@ -33,15 +33,15 @@ List<T>::~List()
 }
 
 template <class T>
-void List<T>::insert(size_t index, T value)
+void _List<T>::_insert(size_t index, T value)
 {
-	if (index > size() || index < 0)
+	if (index > _size() || index < 0)
 	{
 		throw;
 	}
 
-	Node<T>* temp = new Node<T>();
-	Node<T>* location = this->begin;
+	_Node<T>* temp = new _Node<T>();
+	_Node<T>* location = this->begin;
 
 	for (int i = 0; i < index; i++)
 	{
@@ -56,14 +56,14 @@ void List<T>::insert(size_t index, T value)
 }
 
 template <class T>
-void List<T>::erase(size_t index) 
+void _List<T>::_erase(size_t index) 
 {
-	if (index >= size() || index < 0)
+	if (index >= _size() || index < 0)
 	{
 		throw;
 	}
 
-	Node<T>* location = this->begin;
+	_Node<T>* location = this->begin;
 
 	for (int i = 0; i < index; i++)
 	{
@@ -77,14 +77,14 @@ void List<T>::erase(size_t index)
 
 
 template <class T>
-T& List<T>::at(size_t index)
+T& _List<T>::_at(size_t index)
 {
-	if (index >= size() || index < 0)
+	if (index >= _size() || index < 0)
 	{
 		throw;
 	}
 
-	Node<T>* temp = this->begin;
+	_Node<T>* temp = this->begin;
 
 	for (int i = 0; i < index; i++)
 	{
@@ -95,11 +95,11 @@ T& List<T>::at(size_t index)
 }
 
 template <class T>
-size_t List<T>::size()
+size_t _List<T>::_size()
 {
 	size_t result = 0;
 
-	for (Node<T>* temp = this->begin->next; temp->next; temp = temp->next)
+	for (_Node<T>* temp = this->begin->next; temp->next; temp = temp->next)
 	{
 		result++;
 	}

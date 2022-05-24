@@ -6,23 +6,23 @@
 
 void list_test() 
 {
-	List<int> list = List<int>();
+	_List<int> list = _List<int>();
 
 	for (int i = 0; i < 10; i++)
 	{
-		list.insert(0, i);
+		list._insert(0, i);
 	}
 
 	for (int i = 0; i < 3; i++)
 	{
-		list.erase(5);
+		list._erase(5);
 	}
 
-	list.at(2) = 10;
+	list._at(2) = 10;
 
-	for (int i = 0; i < list.size(); i++) 
+	for (int i = 0; i < list._size(); i++) 
 	{
-		std::cout << list.at(i) << " ";
+		std::cout << list._at(i) << " ";
 	}
 }
 

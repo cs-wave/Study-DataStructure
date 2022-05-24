@@ -1,9 +1,9 @@
 #pragma once
 
 template <class T>
-struct Node
+struct _Node
 {
 	T value;
-	Node<T>* prev;
-	Node<T>* next;
+	_Node<T>* prev;
+	_Node<T>* next;
 };
