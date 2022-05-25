@@ -90,7 +90,7 @@ void stack_test()
 	stack_destruct(stack);
 }
 
-int main() 
+int main()
 {
 	stack_test();
 }
