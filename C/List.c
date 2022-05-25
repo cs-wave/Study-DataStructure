@@ -1,3 +1,5 @@
+#pragma once
+#include "stdhs.h"
 #include "List.h"
 
 void list_construct(_List** list)

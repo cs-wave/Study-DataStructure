@@ -1,4 +1,5 @@
 #pragma once
+#include "stdhs.h"
 #include "Stack.h"
 
 void stack_construct(_Stack** stack)

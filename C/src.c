@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <crtdbg.h>
+#include "stdhs.h"
 #include "List.h"
 #include "Queue.h"
 #include "Stack.h"

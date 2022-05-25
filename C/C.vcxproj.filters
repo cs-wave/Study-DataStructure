@@ -53,5 +53,8 @@
     <ClInclude Include="Stack.h">
       <Filter>헤더 파일\Stack</Filter>
     </ClInclude>
+    <ClInclude Include="stdhs.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

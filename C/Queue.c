@@ -1,4 +1,5 @@
 #pragma once
+#include "stdhs.h"
 #include "Queue.h"
 
 void queue_construct(_Queue** queue) 

@@ -1,4 +1,5 @@
 #pragma once
+#include "stdhs.h"
 #include "Node.h"
 
 typedef struct stack
