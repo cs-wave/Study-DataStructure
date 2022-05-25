@@ -3,7 +3,7 @@
 #include <crtdbg.h>
 #include "List.h"
 #include "Queue.h"
-
+#include "Stack.h"
 
 void list_test()
 {
@@ -60,7 +60,37 @@ void queue_test()
 	queue_destruct(queue);
 }
 
+void stack_test()
+{
+	_Stack* stack = NULL;
+	stack_construct(&stack);
+
+	for (int i = 0; i < 5; i++)
+	{
+		stack_push(stack, i);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		printf("%d ", stack_pop(stack));
+	}
+	printf("\n");
+
+	for (int i = 0; i < 5; i++)
+	{
+		stack_push(stack, i);
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		printf("%d ", stack_pop(stack));
+	}
+	printf("\n");
+
+	stack_destruct(stack);
+}
+
 int main() 
 {
-	queue_test();
+	stack_test();
 }
