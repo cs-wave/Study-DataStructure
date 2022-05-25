@@ -19,6 +19,9 @@
     <Filter Include="헤더 파일\List">
       <UniqueIdentifier>{7f798fcc-b4b4-4689-97e0-ce27581bacec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Queue">
+      <UniqueIdentifier>{88b823f2-a27a-4bd3-b505-a7ae1a890d84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src.c">
@@ -27,6 +30,9 @@
     <ClCompile Include="List.c">
       <Filter>헤더 파일\List</Filter>
     </ClCompile>
+    <ClCompile Include="Queue.c">
+      <Filter>헤더 파일\Queue</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Node.h">
@@ -34,6 +40,9 @@
     </ClInclude>
     <ClInclude Include="List.h">
       <Filter>헤더 파일\List</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>헤더 파일\Queue</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

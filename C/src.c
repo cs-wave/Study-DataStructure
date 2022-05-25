@@ -2,35 +2,65 @@
 #include <stdlib.h>
 #include <crtdbg.h>
 #include "List.h"
+#include "Queue.h"
 
 
 void list_test()
 {
 	_List* list = NULL;
-	_construct(&list);
+	list_construct(&list);
 
 	for (int i = 0; i < 10; i++)
 	{
-		_insert(list, 0, i);
+		list_insert(list, 0, i);
 	}
 
 	for (int i = 0; i < 3; i++)
 	{
-		_erase(list, 5);
+		list_erase(list, 5);
 	}
 
-	*_at(list, 2) = 10;
+	*list_at(list, 2) = 10;
 
-	for (int i = 0; i < _size(list); i++)
+	for (int i = 0; i < list_size(list); i++)
 	{
-		printf("%d ", *_at(list, i));
+		printf("%d ", *list_at(list, i));
 	}
 
-	_destruct(list);
+	list_destruct(list);
 }
 
+void queue_test()
+{
+	_Queue* queue = NULL;
+	queue_construct(&queue);
+
+	for (int i = 0; i < 5; i++)
+	{
+		queue_push(queue, i);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		printf("%d ", queue_pop(queue));
+	}
+	printf("\n");
+
+	for (int i = 0; i < 5; i++)
+	{
+		queue_push(queue, i);
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		printf("%d ", queue_pop(queue));
+	}
+	printf("\n");
+
+	queue_destruct(queue);
+}
 
 int main() 
 {
-	list_test();
+	queue_test();
 }

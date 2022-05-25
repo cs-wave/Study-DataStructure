@@ -1,10 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <crtdbg.h>
-
 #include "List.h"
 
-void _construct(_List** list)
+void list_construct(_List** list)
 {
 	_List* result = (_List*)malloc(sizeof(_List));
 
@@ -20,7 +16,7 @@ void _construct(_List** list)
 	*list = result;
 }
 
-void _destruct(_List* list)
+void list_destruct(_List* list)
 {
 	while (list->head != NULL) 
 	{
@@ -32,14 +28,16 @@ void _destruct(_List* list)
 	}
 
 	free(list);
+
+	_CrtDumpMemoryLeaks();
 }
 
-void _insert(_List* list, size_t index, _E value)
+void list_insert(_List* list, size_t index, _E value)
 {
-	if (index > _size(list) || index < 0)
+	if (index > list_size(list) || index < 0)
 	{
 		printf("index over\n"); 
-		return; 
+		return;
 	}
 
 	_Node* temp = (_Node*)malloc(sizeof(_Node));
@@ -55,9 +53,9 @@ void _insert(_List* list, size_t index, _E value)
 	temp->value = value;
 }
 
-void _erase(_List* list, size_t index)
+void list_erase(_List* list, size_t index)
 {
-	if (index >= _size(list) || index < 0) 
+	if (index >= list_size(list) || index < 0) 
 	{
 		printf("index over\n"); 
 		return; 
@@ -77,9 +75,9 @@ void _erase(_List* list, size_t index)
 	location->next = temp;
 }
 
-_E* _at(_List* list, size_t index)
+_E* list_at(_List* list, size_t index)
 {
-	if (index >= _size(list) || index < 0)
+	if (index >= list_size(list) || index < 0)
 	{
 		printf("index over\n");
 		return;
@@ -95,7 +93,7 @@ _E* _at(_List* list, size_t index)
 	return &(location->next->value);
 }
 
-size_t _size(_List* list)
+size_t list_size(_List* list)
 {
 	int result = 0;
 
@@ -107,12 +105,13 @@ size_t _size(_List* list)
 	return result;
 }
 
-void show(_List* list) 
-{
-	printf("Start -> ");
-	for (_Node* temp = list->head->next; temp->next != NULL; temp = temp->next)
-	{
-		printf("%d -> ", temp->value);
-	}
-	printf("End\n\n");
-}
+
+//void show(_List* list) 
+//{
+//	printf("Start -> ");
+//	for (_Node* temp = list->head->next; temp->next != NULL; temp = temp->next)
+//	{
+//		printf("%d -> ", temp->value);
+//	}
+//	printf("End\n\n");
+//}
