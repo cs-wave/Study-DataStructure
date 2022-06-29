@@ -90,5 +90,5 @@ void stack_test()
 
 int main()
 {
-	stack_test();
+	list_test();
 }

@@ -4,29 +4,44 @@
 
 void stack_construct(_Stack** stack)
 {
-	_Stack* result = (_Stack*)malloc(sizeof(_Stack));
+	_Stack* result = NULL;
 
-	result->head = (_Node*)malloc(sizeof(_Node));
-	result->tail = (_Node*)malloc(sizeof(_Node));
+	if ((result = (_Stack*)malloc(sizeof(_Stack))) != NULL) 
+	{
+		if ((result->head = (_Node*)malloc(sizeof(_Node))) != NULL 
+			&& (result->tail = (_Node*)malloc(sizeof(_Node))) != NULL) 
+		{
+			result->head->next = result->tail;
+			result->tail->next = NULL;
 
-	result->head->next = result->tail;
-	result->tail->next = NULL;
+			result->head->value = -1;
+			result->tail->value = -1;
 
-	result->head->value = -1;
-	result->tail->value = -1;
+			*stack = result;
 
-	*stack = result;
+			return;
+		}
+	}
+
+	printf("memory leaks");
 }
 
 void stack_destruct(_Stack* stack)
 {
-	while (stack->head != NULL)
+	if (stack->head != NULL)
 	{
-		_Node* temp = stack->head->next;
+		_Node* temp = stack->head;
+		_Node* temp_next = temp->next;
 
-		free(stack->head);
+		while (temp_next != stack->tail->next)
+		{
+			free(temp);
 
-		stack->head = temp;
+			temp = temp_next;
+			temp_next = temp->next;
+		}
+
+		free(stack->tail);
 	}
 
 	free(stack);
@@ -38,12 +53,19 @@ void stack_push(_Stack* stack, _E value)
 {
 	_Node* location = stack->head;
 
-	_Node* temp = (_Node*)malloc(sizeof(_Node));
+	_Node* new_node = NULL;
 
-	temp->next = location->next;
-	location->next = temp;
+	if ((new_node = (_Node*)malloc(sizeof(_Node))) != NULL)
+	{
+		new_node->next = location->next;
+		location->next = new_node;
 
-	temp->value = value;
+		new_node->value = value;
+
+		return;
+	}
+
+	printf("memory leaks");
 }
 
 _E stack_pop(_Stack* stack)
@@ -51,7 +73,8 @@ _E stack_pop(_Stack* stack)
 	if (stack_size(stack) == 0)
 	{
 		printf("stack empty\n");
-		return;
+
+		return 0;
 	}
 
 	_Node* location = stack->head->next->next;
@@ -66,9 +89,9 @@ _E stack_pop(_Stack* stack)
 
 size_t stack_size(_Stack* stack)
 {
-	int result = 0;
+	size_t result = 0;
 
-	for (_Node* temp = stack->head->next; temp->next != NULL; temp = temp->next)
+	for (_Node* location = stack->head->next; location != stack->tail; location = location->next)
 	{
 		result++;
 	}

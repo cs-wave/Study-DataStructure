@@ -4,29 +4,44 @@
 
 void queue_construct(_Queue** queue) 
 {
-	_Queue* result = (_Queue*)malloc(sizeof(_Queue));
+	_Queue* result = NULL;
 
-	result->head = (_Node*)malloc(sizeof(_Node));
-	result->tail = (_Node*)malloc(sizeof(_Node));
+	if ((result = (_Queue*)malloc(sizeof(_Queue))) != NULL)
+	{
+		if ((result->head = (_Node*)malloc(sizeof(_Node))) != NULL
+			&& (result->tail = (_Node*)malloc(sizeof(_Node))) != NULL)
+		{
+			result->head->next = result->tail;
+			result->tail->next = result->head;
 
-	result->head->next = result->tail;
-	result->tail->next = NULL;
+			result->head->value = -1;
+			result->tail->value = -1;
 
-	result->head->value = -1;
-	result->tail->value = -1;
+			*queue = result;
 
-	*queue = result;
+			return;
+		}
+	}
+
+	printf("memory leaks");
 }
 
 void queue_destruct(_Queue* queue)
 {
-	while (queue->head != NULL)
+	if (queue->head != NULL)
 	{
-		_Node* temp = queue->head->next;
+		_Node* temp = queue->head;
+		_Node* temp_next = temp->next;
 
-		free(queue->head);
+		while (temp_next != queue->tail->next)
+		{
+			free(temp);
 
-		queue->head = temp;
+			temp = temp_next;
+			temp_next = temp->next;
+		}
+
+		free(queue->tail);
 	}
 
 	free(queue);
@@ -36,16 +51,20 @@ void queue_destruct(_Queue* queue)
 
 void queue_push(_Queue* queue, _E value)
 {
-	_Node* location = NULL;
+	_Node* temp = NULL;
 
-	for (location = queue->head; location->next->next != NULL; location = location->next);
+	if ((temp = (_Node*)malloc(sizeof(_Node))) != NULL) 
+	{
+		queue->tail->next->next = temp;
+		queue->tail->next = temp;
+		temp->next = queue->tail;
 
-	_Node* temp = (_Node*)malloc(sizeof(_Node));
+		temp->value = value;
 
-	temp->next = location->next;
-	location->next = temp;
+		return;
+	}
 
-	temp->value = value;
+	printf("memory leaks");
 }
 
 _E queue_pop(_Queue* queue)
@@ -53,11 +72,12 @@ _E queue_pop(_Queue* queue)
 	if (queue_size(queue) == 0) 
 	{
 		printf("queue empty\n");
-		return;
+
+		return 0;
 	}
 
-	_Node* location = queue->head->next->next;
 	_E result = queue->head->next->value;
+	_Node* location = queue->head->next->next;
 
 	free(queue->head->next);
 
@@ -68,9 +88,9 @@ _E queue_pop(_Queue* queue)
 
 size_t queue_size(_Queue* queue)
 {
-	int result = 0;
+	size_t result = 0;
 
-	for (_Node* temp = queue->head->next; temp->next != NULL; temp = temp->next)
+	for (_Node* location = queue->head->next; location != queue->tail; location = location->next)
 	{
 		result++;
 	}
