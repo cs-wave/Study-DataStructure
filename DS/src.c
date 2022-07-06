@@ -25,5 +25,7 @@ int main()
 		printf("%d -> ", *at(list, i));
 	}
 
+	destruct(&list);
+
 	printf("CHECK");
 }
