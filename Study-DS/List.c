@@ -6,7 +6,7 @@
 /// <param name="list"> 대상이 될 리스트 </param>
 void construct(LIST** list)
 {
-	(*list) = (LIST**)malloc(sizeof(LIST*));
+	*list = (LIST*)malloc(sizeof(LIST));
 
 	if (*list != NULL)
 	{
@@ -34,7 +34,7 @@ void construct(LIST** list)
 /// <param name="list"> 대상이 될 리스트 </param>
 void destruct(LIST** list) 
 {
-
+	_CrtDumpMemoryLeaks();
 }
 
 /// <summary>
