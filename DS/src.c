@@ -1,6 +1,8 @@
 #include "header.h"
 #include "List.h"
 
+// main source code
+
 int main()
 {
 	LIST* list = NULL;
