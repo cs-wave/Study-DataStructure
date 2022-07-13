@@ -34,7 +34,18 @@ void construct(LIST** list)
 /// <param name="list"> 대상이 될 리스트 </param>
 void destruct(LIST** list) 
 {
-	_CrtDumpMemoryLeaks();
+	if (*list != NULL) 
+	{
+		for (NODE* now = (*list)->begin; now != NULL; free((*list)->begin))
+		{
+			(*list)->begin = now;
+			now = now->next;
+		}
+
+		free(*list);
+		*list = NULL;
+	}
+	//_CrtDumpMemoryLeaks();
 }
 
 /// <summary>
@@ -133,7 +144,10 @@ void erase(LIST* list, size_t index)
 /// <param name="list"> 대상이 될 리스트 </param>
 void clear(LIST* list)
 {
-
+	while (list->size != 0) 
+	{
+		erase(list, 0);
+	}
 }
 
 /// <summary>
@@ -141,9 +155,41 @@ void clear(LIST* list)
 /// </summary>
 /// <param name="list"> 대상이 될 리스트 </param>
 /// <param name="target"> 뒤에 이어붙일 리스트 </param>
-void merge(LIST* list, LIST* target)
+void merge(LIST* list, LIST** target)
 {
+	if ((*target)->size == 0 && list->size != 0)
+	{
+		destruct(target);
+	}
+	else if (list->size == 0) 
+	{
+		free(list->begin);
+		free(list->end);
 
+		list->begin = (*target)->begin;
+		list->end = (*target)->end;
+		
+		list->size = (*target)->size;
+
+		free(*target);
+
+		*target = NULL;
+	}
+	else
+	{
+		NODE* temp = NULL;
+		for (temp = list->begin; temp->next != list->end; temp = temp->next);
+
+		temp->next = (*target)->begin->next;
+
+		free(list->end);
+		list->end = (*target)->end;
+		list->size = list->size + (*target)->size;
+
+		free((*target)->begin);
+		free((*target));
+		(*target) = NULL;
+	}
 }
 
 /// <summary>

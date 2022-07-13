@@ -5,27 +5,38 @@
 
 int main()
 {
-	LIST* list = NULL;
+	LIST* list1 = NULL;
 	
-	construct(&list);
+	construct(&list1);
 
-	insert(list, 0, 1);
-	insert(list, 0, 2);
-	insert(list, 0, 3);
-	insert(list, 0, 4);
-	insert(list, 0, 5);
+	insert(list1, 0, 1);
+	insert(list1, 0, 2);
+	insert(list1, 0, 3);
+	insert(list1, 0, 4);
+	insert(list1, 0, 5);
 
-	int a = *at(list, 3);
-	*at(list, 2) = 4;
+	LIST* list2 = NULL;
 
-	erase(list, 4);
+	construct(&list2);
 
-	for (int i = 0; i < size(list); i++) 
+	insert(list2, 0, 6);
+	insert(list2, 0, 7);
+	insert(list2, 0, 8);
+	insert(list2, 0, 9);
+	insert(list2, 0, 10);
+
+	merge(list1, &list2);
+
+	for (int i = 0; i < size(list1); i++) 
 	{
-		printf("%d -> ", *at(list, i));
+		printf("%d -> ", *at(list1, i));
 	}
 
-	destruct(&list);
+	destruct(&list1);
+	destruct(&list2);
 
 	printf("CHECK");
+
+	_CrtDumpMemoryLeaks();
+
 }
