@@ -6,3 +6,9 @@
 #include <crtdbg.h>
 
 typedef int element;
+
+typedef struct node
+{
+	element data;
+	struct node* next;
+} NODE;

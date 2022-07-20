@@ -1,12 +1,6 @@
 #pragma once
 #include "header.h"
 
-typedef struct node
-{
-	element data;
-	struct node* next;
-} NODE;
-
 typedef struct list
 {
 	NODE* begin;
@@ -14,20 +8,20 @@ typedef struct list
 	size_t size;
 } LIST;
 
-void construct(LIST**);
-void destruct(LIST**);
+void l_construct(LIST**);
+void l_destruct(LIST**);
 
-bool empty(LIST*);
-size_t size(LIST*);
-element* at(LIST*, size_t);
+bool l_empty(LIST*);
+size_t l_size(LIST*);
+element* l_at(LIST*, size_t);
 
-void insert(LIST*, size_t, element);
-void erase(LIST*, size_t);
-void clear(LIST*);
+void l_insert(LIST*, size_t, element);
+void l_erase(LIST*, size_t);
+void l_clear(LIST*);
 
-void append(LIST*, LIST**);
-void split(LIST*, LIST**, size_t);
+void l_append(LIST*, LIST**);
+void l_split(LIST*, LIST**, size_t);
 
-size_t find(LIST*, void*);
-void reverse(LIST*);
-void sort(LIST*);
+size_t l_find_element(LIST*, element);
+void l_reverse(LIST*);
+void l_sort(LIST*, bool);

@@ -18,12 +18,18 @@
     <ClCompile Include="List.c">
       <Filter>File\LinkedList</Filter>
     </ClCompile>
+    <ClCompile Include="Stack.c">
+      <Filter>File\LinkedList</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header.h">
       <Filter>File\Program</Filter>
     </ClInclude>
     <ClInclude Include="List.h">
+      <Filter>File\LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
       <Filter>File\LinkedList</Filter>
     </ClInclude>
   </ItemGroup>
