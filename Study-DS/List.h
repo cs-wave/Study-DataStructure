@@ -25,7 +25,7 @@ void insert(LIST*, size_t, element);
 void erase(LIST*, size_t);
 void clear(LIST*);
 
-void merge(LIST*, LIST**);
+void append(LIST*, LIST**);
 void split(LIST*, LIST**, size_t);
 
 size_t find(LIST*, void*);

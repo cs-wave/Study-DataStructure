@@ -25,12 +25,26 @@ int main()
 	insert(list2, 0, 9);
 	insert(list2, 0, 10);
 
-	merge(list1, &list2);
+	append(list1, &list2);
 
 	for (int i = 0; i < size(list1); i++) 
 	{
 		printf("%d -> ", *at(list1, i));
 	}
+	printf("\n");
+
+	split(list1, &list2, 9);
+
+	for (int i = 0; i < size(list1); i++)
+	{
+		printf("%d -> ", *at(list1, i));
+	}
+	printf("\n");
+	for (int i = 0; i < size(list2); i++)
+	{
+		printf("%d -> ", *at(list2, i));
+	}
+	printf("\n");
 
 	destruct(&list1);
 	destruct(&list2);

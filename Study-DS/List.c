@@ -155,7 +155,7 @@ void clear(LIST* list)
 /// </summary>
 /// <param name="list"> 대상이 될 리스트 </param>
 /// <param name="target"> 뒤에 이어붙일 리스트 </param>
-void merge(LIST* list, LIST** target)
+void append(LIST* list, LIST** target)
 {
 	if ((*target)->size == 0 && list->size != 0)
 	{
@@ -178,6 +178,7 @@ void merge(LIST* list, LIST** target)
 	else
 	{
 		NODE* temp = NULL;
+		
 		for (temp = list->begin; temp->next != list->end; temp = temp->next);
 
 		temp->next = (*target)->begin->next;
@@ -200,7 +201,37 @@ void merge(LIST* list, LIST** target)
 /// <param name="index"> 쪼갤 인덱스 </param>
 void split(LIST* list, LIST** target, size_t index)
 {
+	NODE* now = list->begin;
 
+	for (int i = 0; i < index; i++)
+	{
+		now = now->next;
+	}
+
+	if (target != NULL) 
+	{
+		destruct(target);
+		construct(target);
+
+		if (*target != NULL)
+		{
+			(*target)->begin->next = now->next;
+			(*target)->end = list->end;
+
+			NODE* end = (NODE*)malloc(sizeof(NODE));
+
+			if (end != NULL)
+			{
+				end->next = NULL;
+			}
+
+			now->next = end;
+			list->end = end;
+
+			(*target)->size = list->size - index;
+			list->size = index;
+		}
+	}
 }
 
 /// <summary>
