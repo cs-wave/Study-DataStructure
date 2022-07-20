@@ -216,6 +216,8 @@ void split(LIST* list, LIST** target, size_t index)
 		if (*target != NULL)
 		{
 			(*target)->begin->next = now->next;
+
+			free((*target)->end);
 			(*target)->end = list->end;
 
 			NODE* end = (NODE*)malloc(sizeof(NODE));

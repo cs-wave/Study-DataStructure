@@ -33,13 +33,14 @@ int main()
 	}
 	printf("\n");
 
-	split(list1, &list2, 9);
+	split(list1, &list2, 5);
 
 	for (int i = 0; i < size(list1); i++)
 	{
 		printf("%d -> ", *at(list1, i));
 	}
 	printf("\n");
+
 	for (int i = 0; i < size(list2); i++)
 	{
 		printf("%d -> ", *at(list2, i));
