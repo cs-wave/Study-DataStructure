@@ -1,11 +1,13 @@
 #include "header.h"
 #include "List.h"
 #include "Stack.h"
+#include "Queue.h"
 
 // main source code
 
-int main()
+void list_test() 
 {
+
 	LIST* list1 = NULL;
 
 	l_construct(&list1);
@@ -62,8 +64,10 @@ int main()
 	l_destruct(&list2);
 
 	printf("\n\nCHECK\n\n");
+}
 
-
+void stack_test()
+{
 	STACK* stack = NULL;
 
 	s_construct(&stack);
@@ -77,7 +81,7 @@ int main()
 	printf("%d\n", s_pop(stack));
 	printf("%d\n", s_pop(stack));
 	printf("%d\n", s_top(stack));
-	
+
 	s_push(stack, 1);
 	s_push(stack, 2);
 	s_push(stack, 3);
@@ -93,7 +97,41 @@ int main()
 	s_destruct(&stack);
 
 	printf("\n\nCHECK\n\n");
+}
 
+void queue_test()
+{
+	QUEUE* queue = NULL;
+
+	q_construct(&queue);
+
+	q_push(queue, 1);
+	q_push(queue, 2);
+	q_push(queue, 3);
+	q_push(queue, 4);
+
+	printf("%d\n", q_pop(queue));
+	printf("%d\n", q_pop(queue));
+	printf("%d\n", q_pop(queue));
+
+	q_push(queue, 1);
+	q_push(queue, 2);
+	q_push(queue, 3);
+	q_push(queue, 4);
+
+	printf("%d\n", q_pop(queue));
+	printf("%d\n", q_pop(queue));
+	printf("%d\n", q_pop(queue));
+	printf("%d\n", q_pop(queue));
+	printf("%d\n", q_pop(queue));
+
+	q_destruct(&queue);
+
+	printf("\n\nCHECK\n\n");
+}
+
+int main()
+{
 
 	_CrtDumpMemoryLeaks();
 }

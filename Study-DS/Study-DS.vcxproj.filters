@@ -10,6 +10,12 @@
     <Filter Include="File\Program">
       <UniqueIdentifier>{966f61d7-750d-47d8-a570-5ece45219567}</UniqueIdentifier>
     </Filter>
+    <Filter Include="File\Stack">
+      <UniqueIdentifier>{f33dc166-c2df-4991-9b13-4bee1925d844}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File\Queue">
+      <UniqueIdentifier>{9dd39c0f-1b9e-494c-ba10-0aaa2ab61344}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src.c">
@@ -19,7 +25,10 @@
       <Filter>File\LinkedList</Filter>
     </ClCompile>
     <ClCompile Include="Stack.c">
-      <Filter>File\LinkedList</Filter>
+      <Filter>File\Stack</Filter>
+    </ClCompile>
+    <ClCompile Include="Queue.c">
+      <Filter>File\Queue</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -30,7 +39,10 @@
       <Filter>File\LinkedList</Filter>
     </ClInclude>
     <ClInclude Include="Stack.h">
-      <Filter>File\LinkedList</Filter>
+      <Filter>File\Stack</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>File\Queue</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
