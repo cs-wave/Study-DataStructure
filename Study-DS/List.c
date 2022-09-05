@@ -39,7 +39,11 @@ void l_destruct(LIST** list)
 		for (NODE* now = (*list)->begin; now != NULL; free((*list)->begin))
 		{
 			(*list)->begin = now;
-			now = now->next;
+
+			if (now != NULL)
+			{
+				now = now->next;
+			}
 		}
 
 		free(*list);

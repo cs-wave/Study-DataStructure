@@ -132,6 +132,7 @@ void queue_test()
 
 int main()
 {
+	list_test();
 
 	_CrtDumpMemoryLeaks();
 }
